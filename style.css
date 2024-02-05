@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6) ), url('images/sky.jpg');
+    background-size: cover;
+}
+
+hr {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+#three-canvas {
+    cursor: grab;
+    width: 100%;
+    height: 100%;
+}
+
+.hero {
+    height: calc(100vh - 3.7px) !important;
+    @apply flex gap-3 items-center justify-center text-pretty;
+}
+
+.planet-info {
+    width: 500px;
+    max-width: 100%;
+    @apply text-white p-3;
+}
