@@ -11,6 +11,9 @@ body {
     margin: 0;
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6) ), url('images/sky.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
+    min-height: max-content;
+    background-position: center;
 }
 
 hr {
@@ -21,15 +24,15 @@ hr {
     cursor: grab;
     width: 100%;
     height: 100%;
+    @apply w-full lg:w-[500px] grow lg:grow-0 xl:grow;
 }
 
 .hero {
-    height: calc(100vh - 3.7px) !important;
-    @apply flex gap-3 items-center justify-center text-pretty;
+    min-height: calc(100vh - 3.7px) !important;
+    height: max-content;
+    @apply flex w-full lg:container lg:mx-auto flex-col-reverse lg:flex-row gap-3 items-center justify-center text-pretty;
 }
 
 .planet-info {
-    width: 500px;
-    max-width: 100%;
-    @apply text-white p-3;
+    @apply w-full lg:w-[500px] text-white p-3 px-6 grow;
 }

@@ -6,8 +6,12 @@ import MoonBumpMap from '/images/moon-bump.jpg';
 const canvas = document.querySelector("#three-canvas");
 const scene = new THREE.Scene()
 let sizes = {
-    width: 500,
-    height: canvas.clientHeight,
+    width: canvas.clientWidth,
+    height: (window.innerHeight - 3),
+}
+
+if (window.innerWidth < 1024) {
+    sizes['height'] = canvas.clientHeight
 }
 
 // Light
@@ -43,13 +47,23 @@ animate();
 
 // Rotate Object
 canvas.addEventListener('mousedown', moon.allowRotate());
+canvas.addEventListener('touchstart', moon.allowRotate());
+
 window.addEventListener('mouseup', moon.allowRotate());
+window.addEventListener('touchend', moon.allowRotate());
+
 window.addEventListener('mousemove', moon.rotate());
+window.addEventListener('touchmove', moon.rotate());
 
 // Calculate screen width & height
 window.addEventListener('resize', () => {
     sizes.width = canvas.clientWidth;
-    sizes.height = canvas.clientHeight;
+
+    if (window.innerWidth < 1024) {
+        sizes['height'] = canvas.clientHeight
+    } else {
+        sizes['height'] = window.innerHeight;
+    }
 
     camera.aspect = sizes.width / sizes.height;
     camera.updateProjectionMatrix();
